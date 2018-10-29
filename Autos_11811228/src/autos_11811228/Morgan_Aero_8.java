@@ -7,25 +7,25 @@ public class Morgan_Aero_8 extends Carro {
 
     String pattern = "dd/MM/yyyy";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-    boolean Convertible;
+    String Convertible;
     String Cabina;
 
-    public Morgan_Aero_8(boolean Convertible, String Cabina, Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
+    public Morgan_Aero_8(String Convertible, String Cabina, Date Fecha, String Color, String Marca_Llantas, String Polarizado, double Vel_max, double Kil_gal, double precio) {
         super(Fecha, Color, Marca_Llantas, Polarizado, Vel_max, Kil_gal, precio);
         this.Convertible = Convertible;
         this.Cabina = Cabina;
         Imprimir += "Modelo de Auto= Morgan Aero 8" + " Fecha de ensamblado=" + simpleDateFormat.format(Fecha) + " Color de pintura=" + Color + " Marca de Llantas=" + Marca_Llantas + " Polarizado=" + Polarizado + " Convertible=" + Convertible + " Cabina=" + Cabina + " Velocidad Maxima=" + Vel_max + "km/hr Kilometros por Galon=" + Kil_gal + "km/gal Precio=" + precio + "\n";
     }
 
-    public boolean isConvertible() {
+    public String getConvertible() {
         return Convertible;
     }
 
-    public void setConvertible(boolean Convertible) {
+    public void setConvertible(String Convertible) {
         this.Convertible = Convertible;
     }
 
-    public String isCabina() {
+    public String getCabina() {
         return Cabina;
     }
 
@@ -63,12 +63,13 @@ public class Morgan_Aero_8 extends Carro {
         this.Marca_Llantas = Marca_Llantas;
     }
 
-    public boolean isPolarizado() {
+    @Override
+    public String getPolarizado() {
         return Polarizado;
     }
 
     @Override
-    public void setPolarizado(boolean Polarizado) {
+    public void setPolarizado(String Polarizado) {
         this.Polarizado = Polarizado;
     }
 

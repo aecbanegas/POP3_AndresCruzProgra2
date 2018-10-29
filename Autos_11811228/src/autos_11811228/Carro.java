@@ -7,13 +7,13 @@ public class Carro {
     Date Fecha;
     String Color;
     String Marca_Llantas;
-    boolean Polarizado;
+    String Polarizado;
     double Vel_max;
     double Kil_gal;
     double precio;
     String Imprimir="";
 
-    public Carro(Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
+    public Carro(Date Fecha, String Color, String Marca_Llantas, String Polarizado, double Vel_max, double Kil_gal, double precio) {
         this.Fecha = Fecha;
         this.Color = Color;
         this.Marca_Llantas = Marca_Llantas;
@@ -50,11 +50,11 @@ public class Carro {
         this.Marca_Llantas = Marca_Llantas;
     }
 
-    public boolean getPolarizado() {
+    public String getPolarizado() {
         return Polarizado;
     }
 
-    public void setPolarizado(boolean Polarizado) {
+    public void setPolarizado(String Polarizado) {
         this.Polarizado = Polarizado;
     }
 
@@ -80,6 +80,11 @@ public class Carro {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return Imprimir;
     }
 
 

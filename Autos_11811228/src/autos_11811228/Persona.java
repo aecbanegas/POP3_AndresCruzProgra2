@@ -1,11 +1,12 @@
 package autos_11811228;
 
 public class Persona {
-    String Nombre;
-    String Identidad;
-    int Edad;
-    double altura;
-    double peso;
+    protected String Nombre;
+    protected String Identidad;
+    protected int Edad;
+    protected double altura;
+    protected double peso;
+    String Imprimir="";
 
     public Persona(String Nombre, String Identidad, int Edad, double altura, double peso) {
         this.Nombre = Nombre;
@@ -54,5 +55,5 @@ public class Persona {
     public void setPeso(double peso) {
         this.peso = peso;
     }
-    
+
 }

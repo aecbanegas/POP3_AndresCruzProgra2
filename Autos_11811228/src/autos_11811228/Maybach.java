@@ -9,10 +9,10 @@ public class Maybach extends Carro {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     int llantas;
 
-    public Maybach(int llantas, Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
+    public Maybach(int llantas, Date Fecha, String Color, String Marca_Llantas, String Polarizado, double Vel_max, double Kil_gal, double precio) {
         super(Fecha, Color, Marca_Llantas, Polarizado, Vel_max, Kil_gal, precio);
         this.llantas = llantas;
-        Imprimir += "Modelo de Auto= Maybach" + " Fecha de ensamblado=" + simpleDateFormat.format(Fecha) + " Color de pintura=" + Color + " Marca de Llantas=" + Marca_Llantas + " Polarizado=" + Polarizado + " Cantidad de llantas de Repuesto=" + llantas + " Velocidad Maxima=" + Vel_max + "km/hr Kilometros por Galon=" + Kil_gal + "km/gal Precio=" + precio + "\n";
+        Imprimir += "Modelo de Auto= Maybach" + " Fecha de ensamblado=" + simpleDateFormat.format(Fecha) + " Color de pintura=" + Color + " Marca de Llantas=" + Marca_Llantas + " Polarizado=" + Polarizado + " Llantas de Repuesto=" + llantas + " Velocidad Maxima=" + Vel_max + "km/hr Kilometros por Galon=" + Kil_gal + "km/gal Precio=" + precio + "\n";
     }
 
     public int getLlantas() {
@@ -53,12 +53,12 @@ public class Maybach extends Carro {
         this.Marca_Llantas = Marca_Llantas;
     }
 
-    public boolean isPolarizado() {
+    public String isPolarizado() {
         return Polarizado;
     }
 
     @Override
-    public void setPolarizado(boolean Polarizado) {
+    public void setPolarizado(String Polarizado) {
         this.Polarizado = Polarizado;
     }
 

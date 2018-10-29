@@ -10,7 +10,7 @@ public class Tramontana extends Carro {
     double Peso;
     int Transmision;
 
-    public Tramontana(double Peso, int Transmision, Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
+    public Tramontana(double Peso, int Transmision, Date Fecha, String Color, String Marca_Llantas, String Polarizado, double Vel_max, double Kil_gal, double precio) {
         super(Fecha, Color, Marca_Llantas, Polarizado, Vel_max, Kil_gal, precio);
         this.Peso = Peso;
         this.Transmision = Transmision;
@@ -63,12 +63,13 @@ public class Tramontana extends Carro {
         this.Marca_Llantas = Marca_Llantas;
     }
 
-    public boolean isPolarizado() {
+    @Override
+    public String getPolarizado() {
         return Polarizado;
     }
 
     @Override
-    public void setPolarizado(boolean Polarizado) {
+    public void setPolarizado(String Polarizado) {
         this.Polarizado = Polarizado;
     }
 

@@ -8,9 +8,9 @@ public class Fisker_Automotive extends Carro {
     String pattern = "dd/MM/yyyy";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     String Cam_Tur;
-    boolean Convertible;
+    String Convertible;
 
-    public Fisker_Automotive(String Cam_Tur, boolean Convertible, Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
+    public Fisker_Automotive(String Cam_Tur, String Convertible, Date Fecha, String Color, String Marca_Llantas, String Polarizado, double Vel_max, double Kil_gal, double precio) {
         super(Fecha, Color, Marca_Llantas, Polarizado, Vel_max, Kil_gal, precio);
         this.Cam_Tur = Cam_Tur;
         this.Convertible = Convertible;
@@ -25,11 +25,11 @@ public class Fisker_Automotive extends Carro {
         this.Cam_Tur = Cam_Tur;
     }
 
-    public boolean isConvertible() {
+    public String getConvertible() {
         return Convertible;
     }
 
-    public void setConvertible(boolean Convertible) {
+    public void setConvertible(String Convertible) {
         this.Convertible = Convertible;
     }
 
@@ -63,12 +63,13 @@ public class Fisker_Automotive extends Carro {
         this.Marca_Llantas = Marca_Llantas;
     }
 
-    public boolean isPolarizado() {
+    @Override
+    public String getPolarizado() {
         return Polarizado;
     }
 
     @Override
-    public void setPolarizado(boolean Polarizado) {
+    public void setPolarizado(String Polarizado) {
         this.Polarizado = Polarizado;
     }
 

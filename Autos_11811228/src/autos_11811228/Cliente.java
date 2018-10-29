@@ -76,5 +76,10 @@ public class Cliente extends Persona{
     public void setPeso(double peso) {
         this.peso = peso;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre=" + Nombre + " Numero de Identidad=" + Identidad + " Edad=" + Edad + " Altura=" + altura + " Peso=" + peso+ "Dinero=" + Dinero + " Carros comprados=" + Carros+"\n";
+    }
     
 }
