@@ -43,6 +43,7 @@ public class Autos_11811228 {
                     opc2();
                     break;
                 case 3:
+                    opc3();
                     break;
                 case 4:
                     break;
@@ -602,126 +603,331 @@ public class Autos_11811228 {
             espacio();
         }
     }
-    
-    public static void opc2(){
-       int opc=0;
-       while(opc!=5){
-        System.out.println("Menu de Empleados\n"
-                + "1-Crear Empleados\n"
-                + "2-Modificar Empleados\n"
-                + "3-Listar Empleados\n"
-                + "4-Eliminar Empleado\n"
-                + "5-Regresar\n"
-                + "Ingrese su opcion: ");
-        String option=s.next();
-        while(validacion(option)==false){
-        System.out.println("Menu de Empleados\n"
-                + "1-Crear Empleados\n"
-                + "2-Modificar Empleados\n"
-                + "3-Listar Empleados\n"
-                + "4-Eliminar Empleado\n"
-                + "5-Regresar\n"
-                + "Ingrese una opcion valida: ");
-        option=s.next();
+
+    public static void opc2() {
+        int opc = 0;
+        while (opc != 5) {
+            System.out.println("Menu de Empleados\n"
+                    + "1-Crear Empleados\n"
+                    + "2-Modificar Empleados\n"
+                    + "3-Listar Empleados\n"
+                    + "4-Eliminar Empleado\n"
+                    + "5-Regresar\n"
+                    + "Ingrese su opcion: ");
+            String option = s.next();
+            while (validacion(option) == false) {
+                System.out.println("Menu de Empleados\n"
+                        + "1-Crear Empleados\n"
+                        + "2-Modificar Empleados\n"
+                        + "3-Listar Empleados\n"
+                        + "4-Eliminar Empleado\n"
+                        + "5-Regresar\n"
+                        + "Ingrese una opcion valida: ");
+                option = s.next();
+            }
+            opc = Integer.parseInt(option);
+            espacio();
+            switch (opc) {
+                case 1: {
+                    System.out.println("Ingrese el nombre del empleado: ");
+                    s.nextLine();
+                    String nombre = s.nextLine();
+                    System.out.println("Ingrese el numero de identidad del empleado: ");
+                    String Identidad = s.next();
+                    while (validacion(Identidad) == false) {
+                        System.out.println("Ingrese el numero de identidad del empleado: ");
+                        Identidad = s.next();
+                    }
+                    System.out.println("Ingrese la edad del empleado: ");
+                    int edad = s.nextInt();
+                    while (edad < 18 || edad > 150) {
+                        System.out.println("Ingrese la edad del empleado: ");
+                        edad = s.nextInt();
+                    }
+                    System.out.println("Ingrese la altura del empleado: ");
+                    double altura = s.nextDouble();
+                    while (altura < 1.55 || altura > 4.00) {
+                        System.out.println("Ingrese la altura del empleado: ");
+                        altura = s.nextDouble();
+                    }
+                    System.out.println("Ingrese el peso del empleado: ");
+                    double peso = s.nextDouble();
+                    while (peso < 120) {
+                        System.out.println("Ingrese el peso del empleado: ");
+                        peso = s.nextDouble();
+                    }
+                    System.out.println("Ingrese la cantida de horas de trabajo del empleado: ");
+                    double horas = s.nextDouble();
+                    while (horas <= 0) {
+                        System.out.println("Ingrese la cantida de horas de trabajo del empleado: ");
+                        horas = s.nextDouble();
+                    }
+                    ListaEmpleados.add(new Empleado(horas, nombre, Identidad, edad, altura, peso));
+                    break;
+                }
+                case 2: {
+                    System.out.println("Ingrese la posicion del empleado a modificar: ");
+                    int posicion = s.nextInt();
+                    while (posicion < 0 || posicion > ListaEmpleados.size() - 1) {
+                        System.out.println("Ingrese la posicion del empleado a modificar: ");
+                        posicion = s.nextInt();
+                    }
+                    System.out.println("1-Nombre\n"
+                            + "2-Identidad\n"
+                            + "3-Edad\n"
+                            + "4-Altura\n"
+                            + "5-Peso\n"
+                            + "6-Horas\n"
+                            + "Ingrese que desea modificar: ");
+                    int opcMod = s.nextInt();
+                    while (opcMod < 1 || opcMod > 6) {
+                        System.out.println("1-Nombre\n"
+                                + "2-Identidad\n"
+                                + "3-Edad\n"
+                                + "4-Altura\n"
+                                + "5-Peso\n"
+                                + "6-Horas\n"
+                                + "Ingrese que desea modificar: ");
+                        opcMod = s.nextInt();
+                    }
+                    switch (opcMod) {
+                        case 1:
+                            System.out.println("Ingrese el nombre del empleado: ");
+                            s.nextLine();
+                            String nombre = s.nextLine();
+                            ListaEmpleados.get(posicion).setNombre(nombre);
+                            break;
+                        case 2:
+                            System.out.println("Ingrese el numero de identidad del empleado: ");
+                            String Identidad = s.next();
+                            while (validacion(Identidad) == false) {
+                                System.out.println("Ingrese el numero de identidad del empleado: ");
+                                Identidad = s.next();
+                            }
+                            ListaEmpleados.get(posicion).setIdentidad(Identidad);
+                            break;
+                        case 3:
+                            System.out.println("Ingrese la edad del empleado: ");
+                            int edad = s.nextInt();
+                            while (edad < 18 || edad > 150) {
+                                System.out.println("Ingrese la edad del empleado: ");
+                                edad = s.nextInt();
+                            }
+                            ListaEmpleados.get(posicion).setEdad(edad);
+                            break;
+                        case 4:
+                            System.out.println("Ingrese la altura del empleado: ");
+                            double altura = s.nextDouble();
+                            while (altura < 1.55 || altura > 4.00) {
+                                System.out.println("Ingrese la altura del empleado: ");
+                                altura = s.nextDouble();
+                            }
+                            ListaEmpleados.get(posicion).setAltura(altura);
+                            break;
+                        case 5:
+                            System.out.println("Ingrese el peso del empleado: ");
+                            double peso = s.nextDouble();
+                            while (peso < 120) {
+                                System.out.println("Ingrese el peso del empleado: ");
+                                peso = s.nextDouble();
+                            }
+                            ListaEmpleados.get(posicion).setPeso(peso);
+                            break;
+                        case 6:
+                            System.out.println("Ingrese la cantidad de horas de trabajo del empleado: ");
+                            double horas = s.nextDouble();
+                            while (horas <= 0) {
+                                System.out.println("Ingrese la cantidad de horas de trabajo del empleado: ");
+                                horas = s.nextDouble();
+                            }
+                            ListaEmpleados.get(posicion).setHoras(horas);
+                            break;
+                    }
+                    break;
+                }
+                case 3:
+                    for (int i = 0; i < ListaEmpleados.size(); i++) {
+                        System.out.println(ListaEmpleados.get(i));
+                    }
+                    espacio();
+                    break;
+                case 4: {
+                    System.out.println("Ingrese la posicion del empleado a eliminar: ");
+                    int posicion = s.nextInt();
+                    while (posicion < 0 || posicion > ListaEmpleados.size() - 1) {
+                        System.out.println("Ingrese la posicion del empleado a eliminar: ");
+                        posicion = s.nextInt();
+                    }
+                    ListaEmpleados.remove(posicion);
+                    espacio();
+                    break;
+                }
+            }
         }
-        opc=Integer.parseInt(option);
         espacio();
-        switch(opc){
-            case 1:
-                System.out.println("Ingrese el nombre del empleado: ");
-                s.nextLine();
-                String nombre=s.nextLine();
-                System.out.println("Ingrese el numero de identidad del empleado: ");
-                String Identidad=s.next();
-                while(validacion(Identidad)==false){
-                System.out.println("Ingrese el numero de identidad del empleado: ");
-                Identidad=s.next();
+    }
+
+    public static void opc3() {
+        int opc = 0;
+        while (opc != 5) {
+            System.out.println("Menu de Clientes\n"
+                    + "1-Crear Clientes\n"
+                    + "2-Modificar Clientes\n"
+                    + "3-Listar Clientes\n"
+                    + "4-Eliminar Cliente\n"
+                    + "5-Regresar\n"
+                    + "Ingrese su opcion: ");
+            String option = s.next();
+            while (validacion(option) == false) {
+                System.out.println("Menu de Clientes\n"
+                        + "1-Crear Clientes\n"
+                        + "2-Modificar Clientes\n"
+                        + "3-Listar Clientes\n"
+                        + "4-Eliminar Cliente\n"
+                        + "5-Regresar\n"
+                        + "Ingrese su opcion: ");
+                option = s.next();
+            }
+            opc = Integer.parseInt(option);
+            espacio();
+            switch (opc) {
+                case 1: {
+                    System.out.println("Ingrese el nombre del cliente: ");
+                    s.nextLine();
+                    String nombre = s.nextLine();
+                    System.out.println("Ingrese el numero de identidad del cliente: ");
+                    String Identidad = s.next();
+                    while (validacion(Identidad) == false) {
+                        System.out.println("Ingrese el numero de identidad del cliente: ");
+                        Identidad = s.next();
+                    }
+                    System.out.println("Ingrese la edad del cliente: ");
+                    int edad = s.nextInt();
+                    while (edad < 18 || edad > 150) {
+                        System.out.println("Ingrese la edad del cliente: ");
+                        edad = s.nextInt();
+                    }
+                    System.out.println("Ingrese la altura del cliente: ");
+                    double altura = s.nextDouble();
+                    while (altura < 1.55 || altura > 4.00) {
+                        System.out.println("Ingrese la altura del cliente: ");
+                        altura = s.nextDouble();
+                    }
+                    System.out.println("Ingrese el peso del cliente: ");
+                    double peso = s.nextDouble();
+                    while (peso < 120) {
+                        System.out.println("Ingrese el peso del cliente: ");
+                        peso = s.nextDouble();
+                    }
+                    System.out.println("Ingrese el dinero del cliente: ");
+                    double dinero = s.nextDouble();
+                    while (dinero <= 0) {
+                        System.out.println("Ingrese el dinero del cliente: ");
+                        dinero = s.nextDouble();
+                    }
+                    ListaClientes.add(new Cliente(dinero, nombre, Identidad, edad, altura, peso));
+                    break;
                 }
-                System.out.println("Ingrese la edad del empleado: ");
-                int edad=s.nextInt();
-                while(edad<18||edad>150){
-                System.out.println("Ingrese la edad del empleado: ");
-                edad=s.nextInt();
+                case 2: {
+                    System.out.println("Ingrese la posicion del cliente a modificar: ");
+                    int posicion = s.nextInt();
+                    while (posicion < 0 || posicion > ListaClientes.size() - 1) {
+                        System.out.println("Ingrese la posicion del cliente a modificar: ");
+                        posicion = s.nextInt();
+                    }
+                    System.out.println("1-Nombre\n"
+                            + "2-Identidad\n"
+                            + "3-Edad\n"
+                            + "4-Altura\n"
+                            + "5-Peso\n"
+                            + "6-Dinero\n"
+                            + "Ingrese que desea modificar: ");
+                    int opcMod = s.nextInt();
+                    while (opcMod < 1 || opcMod > 6) {
+                        System.out.println("1-Nombre\n"
+                                + "2-Identidad\n"
+                                + "3-Edad\n"
+                                + "4-Altura\n"
+                                + "5-Peso\n"
+                                + "6-Dinero\n"
+                                + "Ingrese que desea modificar: ");
+                        opcMod = s.nextInt();
+                    }
+                    switch (opcMod) {
+                        case 1:
+                            System.out.println("Ingrese el nombre del cliente: ");
+                            s.nextLine();
+                            String nombre = s.nextLine();
+                            ListaClientes.get(posicion).setNombre(nombre);
+                            break;
+                        case 2:
+                            System.out.println("Ingrese el numero de identidad del cliente: ");
+                            String Identidad = s.next();
+                            while (validacion(Identidad) == false) {
+                                System.out.println("Ingrese el numero de identidad del cliente: ");
+                                Identidad = s.next();
+                            }
+                            ListaClientes.get(posicion).setIdentidad(Identidad);
+                            break;
+                        case 3:
+                            System.out.println("Ingrese la edad del cliente: ");
+                            int edad = s.nextInt();
+                            while (edad < 18 || edad > 150) {
+                                System.out.println("Ingrese la edad del cliente: ");
+                                edad = s.nextInt();
+                            }
+                            ListaClientes.get(posicion).setEdad(edad);
+                            break;
+                        case 4:
+                            System.out.println("Ingrese la altura del cliente: ");
+                            double altura = s.nextDouble();
+                            while (altura < 1.55 || altura > 4.00) {
+                                System.out.println("Ingrese la altura del cliente: ");
+                                altura = s.nextDouble();
+                            }
+                            ListaClientes.get(posicion).setAltura(altura);
+                            break;
+                        case 5:
+                            System.out.println("Ingrese el peso del cliente: ");
+                            double peso = s.nextDouble();
+                            while (peso < 120) {
+                                System.out.println("Ingrese el peso del cliente: ");
+                                peso = s.nextDouble();
+                            }
+                            ListaClientes.get(posicion).setPeso(peso);
+                            break;
+                        case 6:
+                            System.out.println("Ingrese la cantidad de dinero: ");
+                            double dinero = s.nextDouble();
+                            while (dinero <= 0) {
+                                System.out.println("Ingrese la cantidad de dinero: ");
+                                dinero = s.nextDouble();
+                            }
+                            ListaClientes.get(posicion).setDinero(dinero);
+                            break;
+                    }
+                    break;
                 }
-                System.out.println("Ingrese la altura del empleado: ");
-                double altura=s.nextDouble();
-                while(altura<1.55||altura>4.00){
-                System.out.println("Ingrese la altura del empleado: ");
-                altura=s.nextDouble();
+                case 3:
+                    for (int i = 0; i < ListaClientes.size(); i++) {
+                        System.out.println(ListaClientes.get(i));
+                    }
+                    espacio();
+                    break;
+                case 4: {
+                    System.out.println("Ingrese la posicion del cliente a eliminar: ");
+                    int posicion = s.nextInt();
+                    while (posicion < 0 || posicion > ListaClientes.size() - 1) {
+                        System.out.println("Ingrese la posicion del cliente a eliminar: ");
+                        posicion = s.nextInt();
+                    }
+                    ListaClientes.remove(posicion);
+                    espacio();
+                    break;
                 }
-                System.out.println("Ingrese el peso del empleado: ");
-                double peso=s.nextDouble();
-                while(peso<120){
-                System.out.println("Ingrese el peso del empleado: ");
-                peso=s.nextDouble();
-                }
-                System.out.println("Ingrese la cantida de horas de trabajo del empleado: ");
-                double horas=s.nextDouble();
-                while(horas<=0||horas>=24){
-                System.out.println("Ingrese la cantida de horas de trabajo del empleado: ");
-                horas=s.nextDouble();
-                }
-                ListaEmpleados.add( new Empleado(horas, nombre, Identidad, edad, altura, peso));
-                break;
-            case 2:{
-                System.out.println("Ingrese la posicion del empleado a modificar: ");
-                int posicion=s.nextInt();
-                while(posicion<0||posicion>ListaEmpleados.size()-1){
-                System.out.println("Ingrese la posicion del empleado a modificar: ");
-                posicion=s.nextInt();
-                }
-                System.out.println("1-Nombre\n"
-                        + "2-Identidad\n"
-                        + "3-Edad\n"
-                        + "4-Altura\n"
-                        + "5-Peso\n"
-                        + "6-Horas\n"
-                        + "Ingrese que desea modificar: ");
-                int opcMod=s.nextInt();
-                while(opcMod<1||opcMod>6){
-                System.out.println("1-Nombre\n"
-                        + "2-Identidad\n"
-                        + "3-Edad\n"
-                        + "4-Altura\n"
-                        + "5-Peso\n"
-                        + "6-Horas\n"
-                        + "Ingrese que desea modificar: ");
-                opcMod=s.nextInt();                
-                }
-                switch(opcMod){
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                }
-                break;}
-            case 3:
-                for (int i = 0; i < ListaEmpleados.size(); i++) {
-                    System.out.println(ListaEmpleados.get(i));
-                }
-                espacio();
-                break;
-            case 4:{
-                System.out.println("Ingrese la posicion del empleado a eliminar: ");
-                int posicion=s.nextInt();
-                while(posicion<0||posicion>ListaEmpleados.size()-1){
-                System.out.println("Ingrese la posicion del empleado a eliminar: ");
-                posicion=s.nextInt();
-                }
-                ListaEmpleados.remove(posicion);
-                espacio();
-                break;}
+            }
         }
-       }
-       espacio();
+        espacio();
     }
 
     public static void espacio() {
