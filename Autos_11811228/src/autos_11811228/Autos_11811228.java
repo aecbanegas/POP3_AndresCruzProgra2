@@ -46,11 +46,48 @@ public class Autos_11811228 {
                     opc3();
                     break;
                 case 4:
+                    opc4();
                     break;
             }
         }
     }
 
+    public static void opc4(){
+        System.out.println("Ingrese la posicion del cliente que hara la compra: ");
+        int posCliente=s.nextInt();
+        while(posCliente<0||posCliente>ListaClientes.size()-1){
+        System.out.println("Ingrese la posicion del cliente que hara la compra: ");
+        posCliente=s.nextInt();
+        }
+        espacio();
+        for (int i = 0; i < ListaEmpleados.size(); i++) {
+            if (ListaEmpleados.get(i).getCliente().isEmpty()) {
+                ListaEmpleados.get(i).getCliente().add(ListaClientes.get(posCliente));
+                break;
+            }
+        }
+        System.out.println("Ingrese la posicion del vehiculo que desea comprar: ");
+        int posCarro=s.nextInt();
+        while(posCarro<0||posCarro>ListaCarros.size()-1){
+        System.out.println("Ingrese la posicion del vehiculo que desea comprar: ");
+        posCarro=s.nextInt();
+        }
+        if (ListaCarros.get(posCarro).getPrecio()<ListaClientes.get(posCliente).getDinero()) {
+            ListaClientes.get(posCliente).setDinero(ListaClientes.get(posCliente).getDinero()-ListaCarros.get(posCarro).getPrecio());
+            ListaClientes.get(posCliente).getCarros().add(ListaCarros.get(posCarro));
+            System.out.println("La transaccion se ha hecho de manera satisfactoria, tenga buen dia!");
+        }else{
+            System.out.println("El dinero del cliente es insuficiente para realizar la transaccion! Pruebe con otro vehiculo!");
+        }
+        espacio();
+        for (int i = 0; i < ListaEmpleados.size(); i++) {
+            if (ListaEmpleados.get(i).getCliente().contains(ListaClientes.get(posCliente))) {
+                ListaEmpleados.get(i).getCliente().remove(ListaClientes.get(posCliente));
+                break;
+            }
+        }
+    }
+    
     public static void opc1() {
         int opc = 0;
         while (opc != 5) {
@@ -105,7 +142,7 @@ public class Autos_11811228 {
                     Date fecha = new Date();
                     fecha.setDate(dia);
                     fecha.setMonth(mes);
-                    fecha.setYear(anio);
+                    fecha.setYear(anio-1900);
                     System.out.println("Ingrese el color del vehiculo: ");
                     String color = s.next();
                     System.out.println("Ingrese la marca de las llantas: ");
@@ -241,7 +278,7 @@ public class Autos_11811228 {
                     break;
                 }
                 case 2: {
-                    System.out.println("Ingres la posicion del carro que desea modificar: ");
+                    System.out.println("Ingrese la posicion del carro que desea modificar: ");
                     int posicion = s.nextInt();
                     while (posicion < 0 || posicion > ListaCarros.size() - 1) {
                         System.out.println("Ingres la posicion del carro que desea modificar: ");
@@ -271,22 +308,22 @@ public class Autos_11811228 {
                                 fecha.setDate(dia);
                                 fecha.setMonth(mes);
                                 fecha.setYear(anio);
-                                ListaCarros.get(posicion).setFecha(fecha);
+                                ((Maybach)ListaCarros.get(posicion)).setFecha(fecha);
                                 break;
                             case 2:
                                 System.out.println("Ingrese el Color: ");
                                 String color = s.next();
-                                ListaCarros.get(posicion).setColor(color);
+                                ((Maybach)ListaCarros.get(posicion)).setColor(color);
                                 break;
                             case 3:
                                 System.out.println("Ingrese la marca de llantas: ");
                                 String marca = s.next();
-                                ListaCarros.get(posicion).setMarca_Llantas(marca);
+                                ((Maybach)ListaCarros.get(posicion)).setMarca_Llantas(marca);
                                 break;
                             case 4:
                                 System.out.println("Ingrese si es polarizado: ");
                                 String polarizado = s.next();
-                                ListaCarros.get(posicion).setPolarizado(polarizado);
+                                ((Maybach)ListaCarros.get(posicion)).setPolarizado(polarizado);
                                 break;
                             case 5:
                                 System.out.println("Ingrese la velocidad maxima del vehiculo: ");
@@ -295,7 +332,7 @@ public class Autos_11811228 {
                                     System.out.println("Ingrese la velocidad maxima del vehiculo: ");
                                     vel = s.nextDouble();
                                 }
-                                ListaCarros.get(posicion).setVel_max(vel);
+                                ((Maybach)ListaCarros.get(posicion)).setVel_max(vel);
                                 break;
                             case 6:
                                 System.out.println("Ingrese los km/gal del vehiculo: ");
@@ -304,7 +341,7 @@ public class Autos_11811228 {
                                     System.out.println("Ingrese los km/gal del vehiculo: ");
                                     km = s.nextDouble();
                                 }
-                                ListaCarros.get(posicion).setKil_gal(km);
+                                ((Maybach)ListaCarros.get(posicion)).setKil_gal(km);
                                 break;
                             case 7:
                                 System.out.println("Ingrese el precio de venta: ");
@@ -313,6 +350,7 @@ public class Autos_11811228 {
                                     System.out.println("Ingrese el precio de venta: ");
                                     precio = s.nextDouble();
                                 }
+                                ((Maybach)ListaCarros.get(posicion)).setPrecio(precio);
                                 break;
                             case 8:
                                 System.out.println("Con cuantas llantas de repuesto se vende: ");
@@ -349,22 +387,22 @@ public class Autos_11811228 {
                                     fecha.setDate(dia);
                                     fecha.setMonth(mes);
                                     fecha.setYear(anio);
-                                    ListaCarros.get(posicion).setFecha(fecha);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setFecha(fecha);
                                     break;
                                 case 2:
                                     System.out.println("Ingrese el Color: ");
                                     String color = s.next();
-                                    ListaCarros.get(posicion).setColor(color);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setColor(color);
                                     break;
                                 case 3:
                                     System.out.println("Ingrese la marca de llantas: ");
                                     String marca = s.next();
-                                    ListaCarros.get(posicion).setMarca_Llantas(marca);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setMarca_Llantas(marca);
                                     break;
                                 case 4:
                                     System.out.println("Ingrese si es polarizado: ");
                                     String polarizado = s.next();
-                                    ListaCarros.get(posicion).setPolarizado(polarizado);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setPolarizado(polarizado);
                                     break;
                                 case 5:
                                     System.out.println("Ingrese la velocidad maxima del vehiculo: ");
@@ -373,7 +411,7 @@ public class Autos_11811228 {
                                         System.out.println("Ingrese la velocidad maxima del vehiculo: ");
                                         vel = s.nextDouble();
                                     }
-                                    ListaCarros.get(posicion).setVel_max(vel);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setVel_max(vel);
                                     break;
                                 case 6:
                                     System.out.println("Ingrese los km/gal del vehiculo: ");
@@ -382,7 +420,7 @@ public class Autos_11811228 {
                                         System.out.println("Ingrese los km/gal del vehiculo: ");
                                         km = s.nextDouble();
                                     }
-                                    ListaCarros.get(posicion).setKil_gal(km);
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setKil_gal(km);
                                     break;
                                 case 7:
                                     System.out.println("Ingrese el precio de venta: ");
@@ -391,6 +429,7 @@ public class Autos_11811228 {
                                         System.out.println("Ingrese el precio de venta: ");
                                         precio = s.nextDouble();
                                     }
+                                    ((Morgan_Aero_8) ListaCarros.get(posicion)).setPrecio(precio);
                                     break;
                                 case 8:
                                     System.out.println("Cantidad de cabinas: ");
@@ -438,22 +477,22 @@ public class Autos_11811228 {
                                         fecha.setDate(dia);
                                         fecha.setMonth(mes);
                                         fecha.setYear(anio);
-                                        ListaCarros.get(posicion).setFecha(fecha);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setFecha(fecha);
                                         break;
                                     case 2:
                                         System.out.println("Ingrese el Color: ");
                                         String color = s.next();
-                                        ListaCarros.get(posicion).setColor(color);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setColor(color);
                                         break;
                                     case 3:
                                         System.out.println("Ingrese la marca de llantas: ");
                                         String marca = s.next();
-                                        ListaCarros.get(posicion).setMarca_Llantas(marca);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setMarca_Llantas(marca);
                                         break;
                                     case 4:
                                         System.out.println("Ingrese si es polarizado: ");
                                         String polarizado = s.next();
-                                        ListaCarros.get(posicion).setPolarizado(polarizado);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setPolarizado(polarizado);
                                         break;
                                     case 5:
                                         System.out.println("Ingrese la velocidad maxima del vehiculo: ");
@@ -462,7 +501,7 @@ public class Autos_11811228 {
                                             System.out.println("Ingrese la velocidad maxima del vehiculo: ");
                                             vel = s.nextDouble();
                                         }
-                                        ListaCarros.get(posicion).setVel_max(vel);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setVel_max(vel);
                                         break;
                                     case 6:
                                         System.out.println("Ingrese los km/gal del vehiculo: ");
@@ -471,7 +510,7 @@ public class Autos_11811228 {
                                             System.out.println("Ingrese los km/gal del vehiculo: ");
                                             km = s.nextDouble();
                                         }
-                                        ListaCarros.get(posicion).setKil_gal(km);
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setKil_gal(km);
                                         break;
                                     case 7:
                                         System.out.println("Ingrese el precio de venta: ");
@@ -480,6 +519,7 @@ public class Autos_11811228 {
                                             System.out.println("Ingrese el precio de venta: ");
                                             precio = s.nextDouble();
                                         }
+                                        ((Fisker_Automotive) ListaCarros.get(posicion)).setPrecio(precio);
                                         break;
                                     case 8:
                                         System.out.println("Es camioneta o turismo? ");
@@ -517,22 +557,22 @@ public class Autos_11811228 {
                                             fecha.setDate(dia);
                                             fecha.setMonth(mes);
                                             fecha.setYear(anio);
-                                            ListaCarros.get(posicion).setFecha(fecha);
+                                            ((Tramontana) ListaCarros.get(posicion)).setFecha(fecha);
                                             break;
                                         case 2:
                                             System.out.println("Ingrese el Color: ");
                                             String color = s.next();
-                                            ListaCarros.get(posicion).setColor(color);
+                                            ((Tramontana) ListaCarros.get(posicion)).setColor(color);
                                             break;
                                         case 3:
                                             System.out.println("Ingrese la marca de llantas: ");
                                             String marca = s.next();
-                                            ListaCarros.get(posicion).setMarca_Llantas(marca);
+                                            ((Tramontana) ListaCarros.get(posicion)).setMarca_Llantas(marca);
                                             break;
                                         case 4:
                                             System.out.println("Ingrese si es polarizado: ");
                                             String polarizado = s.next();
-                                            ListaCarros.get(posicion).setPolarizado(polarizado);
+                                            ((Tramontana) ListaCarros.get(posicion)).setPolarizado(polarizado);
                                             break;
                                         case 5:
                                             System.out.println("Ingrese la velocidad maxima del vehiculo: ");
@@ -541,7 +581,7 @@ public class Autos_11811228 {
                                                 System.out.println("Ingrese la velocidad maxima del vehiculo: ");
                                                 vel = s.nextDouble();
                                             }
-                                            ListaCarros.get(posicion).setVel_max(vel);
+                                            ((Tramontana) ListaCarros.get(posicion)).setVel_max(vel);
                                             break;
                                         case 6:
                                             System.out.println("Ingrese los km/gal del vehiculo: ");
@@ -550,7 +590,7 @@ public class Autos_11811228 {
                                                 System.out.println("Ingrese los km/gal del vehiculo: ");
                                                 km = s.nextDouble();
                                             }
-                                            ListaCarros.get(posicion).setKil_gal(km);
+                                            ((Tramontana) ListaCarros.get(posicion)).setKil_gal(km);
                                             break;
                                         case 7:
                                             System.out.println("Ingrese el precio de venta: ");
@@ -559,6 +599,7 @@ public class Autos_11811228 {
                                                 System.out.println("Ingrese el precio de venta: ");
                                                 precio = s.nextDouble();
                                             }
+                                            ((Tramontana) ListaCarros.get(posicion)).setPrecio(precio);
                                             break;
                                         case 8:
                                             System.out.println("Ingrese el peso: ");
