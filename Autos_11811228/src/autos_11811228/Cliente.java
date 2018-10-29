@@ -79,7 +79,7 @@ public class Cliente extends Persona{
 
     @Override
     public String toString() {
-        return "Nombre=" + Nombre + " Numero de Identidad=" + Identidad + " Edad=" + Edad + " Altura=" + altura + " Peso=" + peso+ "Dinero=" + Dinero + " Carros comprados=" + Carros+"\n";
+        return "Nombre=" + Nombre + " Numero de Identidad=" + Identidad + " Edad=" + Edad + " Altura=" + altura + " Peso=" + peso+ "Dinero=" + Dinero + " \nCarros comprados=" + Carros+"\n";
     }
     
 }
