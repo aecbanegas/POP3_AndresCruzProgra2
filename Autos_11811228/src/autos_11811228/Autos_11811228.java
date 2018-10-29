@@ -628,7 +628,7 @@ public class Autos_11811228 {
                 }
                 case 3:
                     for (int i = 0; i < ListaCarros.size(); i++) {
-                        System.out.println(ListaCarros.get(i));
+                        System.out.println(i+"- "+ListaCarros.get(i));
                     }
                     break;
                 case 4:
@@ -788,7 +788,7 @@ public class Autos_11811228 {
                 }
                 case 3:
                     for (int i = 0; i < ListaEmpleados.size(); i++) {
-                        System.out.println(ListaEmpleados.get(i));
+                        System.out.println(i+"- "+ListaEmpleados.get(i));
                     }
                     espacio();
                     break;
@@ -951,7 +951,7 @@ public class Autos_11811228 {
                 }
                 case 3:
                     for (int i = 0; i < ListaClientes.size(); i++) {
-                        System.out.println(ListaClientes.get(i));
+                        System.out.println(i+"- "+ListaClientes.get(i));
                     }
                     espacio();
                     break;
