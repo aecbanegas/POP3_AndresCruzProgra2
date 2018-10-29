@@ -11,6 +11,7 @@ public class Carro {
     double Vel_max;
     double Kil_gal;
     double precio;
+    String Imprimir="";
 
     public Carro(Date Fecha, String Color, String Marca_Llantas, boolean Polarizado, double Vel_max, double Kil_gal, double precio) {
         this.Fecha = Fecha;
@@ -80,5 +81,6 @@ public class Carro {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
 
 }
